@@ -30,3 +30,26 @@
 *.exe
 *.out
 *.app
+
+# Rider IDE specific
+.idea/
+*.sln
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Debug files
+*.pdb
+*.log
+
+# Backup files
+*.bak
+*.tmp
+*.swp
