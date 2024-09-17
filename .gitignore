@@ -6,6 +6,10 @@
 *.lo
 *.o
 *.obj
+*.iobj
+*.ilk
+*.idb
+*.ipdb
 
 # Precompiled Headers
 *.gch
@@ -30,6 +34,7 @@
 *.exe
 *.out
 *.app
+*.recipe
 
 # Rider IDE specific
 .idea/
@@ -48,6 +53,7 @@ Makefile
 # Debug files
 *.pdb
 *.log
+*.tlog
 
 # Backup files
 *.bak
