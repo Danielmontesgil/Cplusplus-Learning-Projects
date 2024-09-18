@@ -23,6 +23,7 @@ void GameController::process_file()
     {
         while (std::getline(words_file, line))
         {
+            std::transform(line.cbegin(), line.cend(), line.begin(), std::toupper);
             words_vector.push_back(line);
         }
     }
@@ -48,9 +49,10 @@ void GameController::select_word()
     }
 }
 
-void GameController::process_input(const std::string &input, const std::function<void()>& win_callback, const std::function<void()>& lose_callback)
+void GameController::process_input(std::string &input, const std::function<void()>& win_callback, const std::function<void()>& lose_callback)
 {
     bool success {false};
+    std::transform(input.cbegin(), input.cend(), input.begin(), std::toupper);
 
     if(input.size() > 1)
     {
