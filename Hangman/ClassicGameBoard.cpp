@@ -1,8 +1,8 @@
 ﻿#include <iostream>
-#include "GameBoard.h"
+#include "ClassicGameBoard.h"
 #include <iomanip>
 
-void GameBoard::display_game_board(const std::string &player_word) const
+void ClassicGameBoard::display_game_board(const std::string &player_word) const
 {
     auto value = player_word.length() + 3;
     std::cout << std::setw(value + 3 + line1.length()) << line1;
@@ -13,7 +13,7 @@ void GameBoard::display_game_board(const std::string &player_word) const
     std::cout << "   " << player_word << "   " << line6;
 }
 
-void GameBoard::update_board(int fails)
+void ClassicGameBoard::update_board(int fails)
 {
     if(fails == 0)
     {
@@ -51,9 +51,5 @@ void GameBoard::update_board(int fails)
     if(fails >= 7)
     {
         line6[2] = '\\';
-    }
-    if(fails >= 8)
-    {
-        std::cout << "Number of fails not handled";
     }
 }

@@ -1,10 +1,13 @@
 ﻿#pragma once
 #include "GameBoardBase.h"
 
-class GameBoard : public GameBoardBase
+// Classic Game board that implements GameBoardBase
+class ClassicGameBoard : public GameBoardBase
 {
 public:
+    // Displays the current state of the game board based on the player's guessed word.
     virtual void display_game_board(const std::string &player_word) const override;
+    // Updates the game board according to the number of failed attempts.
     virtual void update_board(int fails) override;
 
 private:

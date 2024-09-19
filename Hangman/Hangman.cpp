@@ -1,8 +1,8 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
-#include "GameBoard.h"
-#include "GameController.h"
+#include "ClassicGameBoard.h"
+#include "ClassicGameMode.h"
 
 enum class GameMode
 {
@@ -12,10 +12,10 @@ enum class GameMode
 
 int main(int argc, char* argv[])
 {
-    GameControllerBase* game_controller = {};
+    GameModeBase* game_mode = {};
     int mode_selection {};
 
-    while(game_controller == nullptr)
+    while(game_mode == nullptr)
     {
         std::cout << "1. Classic\n";
         std::cout << "2. Hardcore\n";
@@ -25,14 +25,14 @@ int main(int argc, char* argv[])
         switch (mode_selection)
         {
         case 1:
-            game_controller = new GameController();
+            game_mode = new ClassicGameMode();
             break;
         case 2:
             std::cout << "This mode is not implemented yet\n";
-            game_controller = nullptr;
+            game_mode = nullptr;
             break;
         default:
-            game_controller = nullptr;
+            game_mode = nullptr;
             break;
         }
 
@@ -41,58 +41,58 @@ int main(int argc, char* argv[])
     }
     
     auto is_playing {true};
-    auto game_board = GameBoard();
+    auto game_board = ClassicGameBoard();
     std::string letter {};
 
-    game_controller->init_game();
+    game_mode->init_game();
 
     while (is_playing)
     {
-        if(game_controller->get_player_word().empty())
+        if(game_mode->get_player_word().empty())
         {
             is_playing = false;
             std::cout << "The word is empty";
         }
         
         system("cls");
-        game_board.display_game_board(game_controller->get_player_word());
+        game_board.display_game_board(game_mode->get_player_word());
         std::cout << "Enter a letter: ";
         std::cin >> letter;
-
-        game_controller->process_input(letter, [&is_playing, &game_controller] ()
+    
+        game_mode->process_input(letter, [&is_playing, &game_mode] ()
         {
             system("cls");
             std::cout << "Player wins\n";
-            game_controller->display_mistakes(true);
+            game_mode->display_mistakes(true);
             std::cout << "\n";
             is_playing = false;
-        }, [&is_playing, &game_controller] ()
+        }, [&is_playing, &game_mode] ()
         {
             system("cls");
             std::cout << "Player loses\n";
-            game_controller->display_mistakes();
+            game_mode->display_mistakes();
             std::cout << "\n";
             is_playing = false;
         });
-
-        game_board.update_board(game_controller->get_fails());
+    
+        game_board.update_board(game_mode->get_fails());
         
         if(!is_playing)
         {
-            game_board.display_game_board(game_controller->get_player_word());
+            game_board.display_game_board(game_mode->get_player_word());
             std::string input;
             std::cout << "\nDo you want to play again? (Y/N): ";
             std::cin >> input;
             if(std::toupper(input[0]) == 'Y')
             {
                 is_playing = true;
-                game_controller->init_game(true);
-                game_board.update_board(game_controller->get_fails());
+                game_mode->init_game(true);
+                game_board.update_board(game_mode->get_fails());
             }
         }
     }
 
-    delete game_controller;
+    delete game_mode;
     
     return 0;
 }

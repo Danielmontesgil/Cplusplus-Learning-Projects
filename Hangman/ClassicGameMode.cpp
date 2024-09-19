@@ -2,9 +2,9 @@
 #include <vector>
 #include <random>
 #include <iostream>
-#include "GameController.h"
+#include "ClassicGameMode.h"
 
-void GameController::init_game(bool play_again)
+void ClassicGameMode::init_game(bool play_again)
 {
     fails = 0;
     player_tries = {};
@@ -15,12 +15,20 @@ void GameController::init_game(bool play_again)
     select_word();
 }
 
-void GameController::process_file()
+void ClassicGameMode::process_file()
 {
     std::ifstream words_file {"words.txt"};
     std::string line;
     if(words_file)
     {
+        // Handles (BOM) code
+        if (words_file.peek() == 0xEF) {
+            words_file.get(); // 0xEF
+            words_file.get(); // 0xBB
+            words_file.get(); // 0xBF
+        }
+        std::getline(words_file, line);
+        std::cout << line;
         while (std::getline(words_file, line))
         {
             std::transform(line.cbegin(), line.cend(), line.begin(), std::toupper);
@@ -33,7 +41,7 @@ void GameController::process_file()
     }
 }
 
-void GameController::select_word()
+void ClassicGameMode::select_word()
 {
     if(!words_vector.empty())
     {
@@ -49,7 +57,7 @@ void GameController::select_word()
     }
 }
 
-void GameController::process_input(std::string &input, const std::function<void()>& win_callback, const std::function<void()>& lose_callback)
+void ClassicGameMode::process_input(std::string &input, const std::function<void()>& win_callback, const std::function<void()>& lose_callback)
 {
     bool success {false};
     std::transform(input.cbegin(), input.cend(), input.begin(), std::toupper);
@@ -63,25 +71,27 @@ void GameController::process_input(std::string &input, const std::function<void(
             return;
         }
     }
-    
-    for (size_t i = 0; i < word.size(); ++i)
+    else
     {
-        if(input[0] == word[i])
+        for (size_t i = 0; i < word.size(); ++i)
         {
-            player_word[i] = input[0];
-            success = true;
-
-            if(word == player_word)
+            if(input[0] == word[i])
             {
-                win_callback();
+                player_word[i] = input[0];
+                success = true;
+
+                if(word == player_word)
+                {
+                    win_callback();
+                }
             }
         }
     }
-
+    
     if(!success)
     {
         fails = input.size() > 1 ? fails + 3 : fails + 1;
-        player_tries.push_back(input[0]);
+        player_tries.push_back(input);
         if(fails >= 7)
         {
             lose_callback();
@@ -89,7 +99,7 @@ void GameController::process_input(std::string &input, const std::function<void(
     }
 }
 
-void GameController::display_mistakes(bool player_won) const
+void ClassicGameMode::display_mistakes(bool player_won) const
 {
     if(player_tries.empty())
     {

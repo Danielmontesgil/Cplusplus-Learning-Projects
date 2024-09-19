@@ -154,15 +154,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameBoard.cpp" />
-    <ClCompile Include="GameController.cpp" />
+    <ClCompile Include="ClassicGameBoard.cpp" />
+    <ClCompile Include="ClassicGameMode.cpp" />
     <ClCompile Include="Hangman.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameBoard.h" />
+    <ClInclude Include="ClassicGameBoard.h" />
     <ClInclude Include="GameBoardBase.h" />
-    <ClInclude Include="GameController.h" />
-    <ClInclude Include="GameControllerBase.h" />
+    <ClInclude Include="ClassicGameMode.h" />
+    <ClInclude Include="GameModeBase.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="words.txt" />
