@@ -99,14 +99,14 @@ void ClassicGameMode::process_input(std::string &input, const std::function<void
     }
 }
 
-void ClassicGameMode::display_mistakes(bool player_won) const
+void ClassicGameMode::display_mistakes(const bool player_won) const
 {
     if(player_tries.empty())
     {
         return;
     }
     std::cout << "Your mistakes: "; 
-    for (auto letter : player_tries)
+    for (const auto &letter : player_tries)
     {
         std::cout << letter << " ";
     }
