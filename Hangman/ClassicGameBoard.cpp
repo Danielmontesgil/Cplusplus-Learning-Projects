@@ -4,12 +4,12 @@
 
 void ClassicGameBoard::display_game_board(const std::string &player_word) const
 {
-    auto value = player_word.length() + 3;
-    std::cout << std::setw(value + 3 + line1.length()) << line1;
-    std::cout << std::setw(value + 3 + line2.length()) << line2;
-    std::cout << std::setw(value + 3 + line3.length()) << line3;
-    std::cout << std::setw(value + 3 + line4.length()) << line4;
-    std::cout << std::setw(value + 3 + line5.length()) << line5;
+    auto value = player_word.length() + line_spacing;
+    std::cout << std::setw(value + line_spacing + line1.length()) << line1;
+    std::cout << std::setw(value + line_spacing + line2.length()) << line2;
+    std::cout << std::setw(value + line_spacing + line3.length()) << line3;
+    std::cout << std::setw(value + line_spacing + line4.length()) << line4;
+    std::cout << std::setw(value + line_spacing + line5.length()) << line5;
     std::cout << "   " << player_word << "   " << line6;
 }
 

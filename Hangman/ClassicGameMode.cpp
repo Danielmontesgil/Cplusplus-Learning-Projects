@@ -90,9 +90,9 @@ void ClassicGameMode::process_input(std::string &input, const std::function<void
     
     if(!success)
     {
-        fails = input.size() > 1 ? fails + 3 : fails + 1;
+        fails = input.size() > 1 ? fails + fails_per_word : ++fails;
         player_tries.push_back(input);
-        if(fails >= 7)
+        if(fails >= max_fails)
         {
             lose_callback();
         }

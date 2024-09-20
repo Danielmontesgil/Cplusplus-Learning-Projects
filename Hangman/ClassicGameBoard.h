@@ -17,4 +17,6 @@ private:
     std::string line4 {"     |  \n"};
     std::string line5 {"     |  \n"};
     std::string line6 {"     |  \n"};
+
+    int constexpr line_spacing {3};
 };
