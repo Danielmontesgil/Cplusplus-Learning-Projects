@@ -3,7 +3,13 @@
 #include <iomanip>
 #include "GameBoard.h"
 
-void GameBoard::display_board(int player, int input) const
+void GameBoard::display_board() const
+{
+    display_board({});
+}
+
+
+void GameBoard::display_board(const std::vector<int> &game_status) const
 {
     for (int i = 0; i < board_width; ++i)
     {
@@ -11,8 +17,8 @@ void GameBoard::display_board(int player, int input) const
         for (int j = 0; j < board_width; ++j)
         {
             std::stringstream ss;
-            if (row_num + j + 1 == input) {
-                ss << (player == 1 ? player_1_symbol : player_2_symbol);
+            if (!game_status.empty() && game_status[row_num + j] != -1) {
+                ss << (game_status[row_num + j] == 1 ? player_1_symbol : player_2_symbol);
             } else {
                 ss << row_num + j + 1;
             }
@@ -20,4 +26,9 @@ void GameBoard::display_board(int player, int input) const
         }
         std::cout << row_separator << '\n';
     }
+}
+
+void GameBoard::display_winner(const int winner) const
+{
+    std::cout << "Player " << winner << " won the match";
 }
