@@ -21,9 +21,11 @@ int main(int argc, char* argv[])
         if(game_controller.process_input(input, player))
         {
             system("cls");
-            player_playing++;
             game_board.display_board(game_controller.get_game_status());
-            finished = game_controller.check_winner();
+            if(player_playing >= 5)
+            {
+                finished = game_controller.check_winner();
+            }
         }
         
         std::cin.clear();
@@ -33,6 +35,13 @@ int main(int argc, char* argv[])
         {
             game_board.display_winner(player);
         }
+        else if(player_playing >= 9)
+        {
+            game_board.display_winner(0);
+            finished = true;
+        }
+
+        player_playing++;
     }
     
     return 0;

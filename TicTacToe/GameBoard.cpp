@@ -30,5 +30,10 @@ void GameBoard::display_board(const std::vector<int> &game_status) const
 
 void GameBoard::display_winner(const int winner) const
 {
+    if(winner == 0)
+    {
+        std::cout << "This game is a draw";
+        return;
+    }
     std::cout << "Player " << winner << " won the match";
 }
