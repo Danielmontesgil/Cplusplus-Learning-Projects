@@ -1,47 +1,47 @@
 #include <iostream>
 #include "GameBoard.h"
-#include "GameController.h"
+#include "GameModel.h"
+#include "TwoPlayerGameController.h"
+
+enum class GameMode
+{
+    SinglePlayer,
+    TwoPlayers
+};
 
 int main(int argc, char* argv[])
-{
-    bool finished {false};
-    auto game_controller {GameController()};
-    const auto game_board {GameBoard()};
-    int player_playing {1};
-    
-    game_board.display_board();
+{    
+    const auto game_model {new GameModel()};
+    const auto game_board {new GameBoard()};
+    bool game_mode_selected {false};
 
-    while(!finished)
+    while(!game_mode_selected)
     {
-        char input{};
-        const int player {player_playing % 2 != 0 ? 1 : 2};
-        std::cout << "Player " << (player == 1 ? "1(X)" : "2(O)") << " enter your movement: ";
+        char input;
+        std::cout << "1. Single Player\n" << "2. Two Players\n" << "Select a Game Mode: ";
         std::cin >> input;
 
-        if(game_controller.process_input(input, player))
+        if(isdigit(input))
         {
-            system("cls");
-            game_board.display_board(game_controller.get_game_status());
-            if(player_playing >= 5)
+            const int val = input - '0';
+            if(val == 1)
             {
-                finished = game_controller.check_winner();
+                game_mode_selected = true;
+            }
+            else if(val == 2)
+            {
+                const auto game_controller {new TwoPlayerGameController(game_model, game_board)};
+                game_controller->init_game();
+                game_mode_selected = true;
             }
         }
-        
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        
-        if(finished)
-        {
-            game_board.display_winner(player);
-        }
-        else if(player_playing >= 9)
-        {
-            game_board.display_winner(0);
-            finished = true;
-        }
 
-        player_playing++;
+        if(!game_mode_selected)
+        {
+            system("cls");
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
     }
     
     return 0;

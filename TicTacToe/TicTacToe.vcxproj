@@ -155,12 +155,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameBoard.cpp" />
-    <ClCompile Include="GameController.cpp" />
+    <ClCompile Include="TwoPlayerGameController.cpp" />
+    <ClCompile Include="GameModel.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameBoard.h" />
-    <ClInclude Include="GameController.h" />
+    <ClInclude Include="GameBoardBase.h" />
+    <ClInclude Include="GameModelBase.h" />
+    <ClInclude Include="TwoPlayerGameController.h" />
+    <ClInclude Include="GameModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
