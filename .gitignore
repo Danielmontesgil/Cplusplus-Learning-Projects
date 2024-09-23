@@ -35,6 +35,7 @@
 *.out
 *.app
 *.recipe
+x64/
 
 # Rider IDE specific
 .idea/
