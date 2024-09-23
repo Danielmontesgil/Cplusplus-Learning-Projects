@@ -12,9 +12,11 @@ bool GameController::process_input(char player_input, int player)
             return true;
         }
     }
+
+    return false;
 }
 
-bool GameController::validate_input(char player_input)
+bool GameController::check_winner() const
 {
     const std::vector<std::vector<int>> winning_combinations = {
         {0, 1, 2}, 
