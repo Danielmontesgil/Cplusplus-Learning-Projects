@@ -161,8 +161,6 @@
   <ItemGroup>
     <ClInclude Include="GameBoard.h" />
     <ClInclude Include="GameController.h" />
-    <ClInclude Include="IWinnerObserver.h" />
-    <ClInclude Include="IWinnerSubject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
