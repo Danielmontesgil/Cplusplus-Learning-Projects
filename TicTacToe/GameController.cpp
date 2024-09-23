@@ -1,22 +1,9 @@
 ﻿#include "GameController.h"
-#include "IWinnerObserver.h"
 #include <cctype>
 
-void GameController::attach(IWinnerObserver* observer)
+bool GameController::process_input(char player_input, int player)
 {
-    observer_list.push_back(observer);
-}
-
-void GameController::detach(IWinnerObserver* observer)
-{
-    observer_list.remove(observer);
-}
-
-void GameController::notify()
-{
-    auto iterator = observer_list.begin();
-
-    while (iterator != observer_list.end())
+    if(isdigit(player_input))
     {
         (*iterator)->update();
         ++iterator;
