@@ -8,7 +8,6 @@ void GameBoard::display_board() const
     display_board({});
 }
 
-
 void GameBoard::display_board(const std::vector<int> &game_status) const
 {
     for (int i = 0; i < board_width; ++i)
