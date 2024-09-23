@@ -4,49 +4,35 @@
 
 int main(int argc, char* argv[])
 {
-    bool is_playing {true};
+    bool finished {false};
     auto game_controller {GameController()};
-    auto game_board {GameBoard()};
+    const auto game_board {GameBoard()};
+    int player_playing {1};
+    
     game_board.display_board();
 
-    while(is_playing)
+    while(!finished)
     {
-        int input{};
-        std::cout << "Player 1 (X) enter your movement: ";
+        char input{};
+        const int player {player_playing % 2 != 0 ? 1 : 2};
+        std::cout << "Player " << (player == 1 ? "1(X)" : "2(O)") << " enter your movement: ";
         std::cin >> input;
 
-        // if(game_controller.validate_input(input))
-        // {
+        if(game_controller.process_input(input, player))
+        {
             system("cls");
-            game_board.display_board(1, input);
-        // }
-        // else
-        // {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            //continue;
-        //}
-
-        std::cout << "Player 2 (O) enter your movement: ";
-        std::cin >> input;
-        
-        // if(game_controller.validate_input(input))
-        // {
-            system("cls");
-            game_board.display_board(2, input);
-        // }
-        // else
-        // {
-        //     continue;
-        // }
+            player_playing++;
+            game_board.display_board(game_controller.get_game_status());
+            finished = game_controller.check_winner();
+        }
         
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-        // Win condition, maybe implement the model here
-        // How should manage the input?
         
-        //is_playing = false;
+        if(finished)
+        {
+            game_board.display_winner(player);
+        }
     }
     
     return 0;
