@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameBoard.cpp" />
+    <ClCompile Include="SinglePlayerGameController.cpp" />
     <ClCompile Include="TwoPlayerGameController.cpp" />
     <ClCompile Include="GameModel.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
@@ -162,7 +163,9 @@
   <ItemGroup>
     <ClInclude Include="GameBoard.h" />
     <ClInclude Include="GameBoardBase.h" />
+    <ClInclude Include="GameControllerBase.h" />
     <ClInclude Include="GameModelBase.h" />
+    <ClInclude Include="SinglePlayerGameController.h" />
     <ClInclude Include="TwoPlayerGameController.h" />
     <ClInclude Include="GameModel.h" />
   </ItemGroup>
