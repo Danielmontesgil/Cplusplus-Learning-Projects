@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
             }
             else if(val == 2)
             {
-                const auto game_controller {new TwoPlayerGameController()};
+                const auto game_controller {new TwoPlayerGameController(game_model, game_board)};
                 game_controller->init_game();
                 game_mode_selected = true;
             }

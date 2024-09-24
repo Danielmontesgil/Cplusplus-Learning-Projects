@@ -1,13 +1,15 @@
 ﻿#pragma once
 #include <string>
 #include <vector>
+#include "GameBoardBase.h"
 
-class GameBoard
+class GameBoard : public GameBoardBase
 {
 public:
-    void display_board() const;
-    void display_board(const std::vector<int> &game_status) const;
-    void display_winner(int winner) const;
+    virtual void display_board() const override;
+    virtual void display_board(const std::vector<int> &game_status) const override;
+    virtual void display_winner(int winner) const override;
+    virtual ~GameBoard() override = default;
 
 private:
     std::string row_separator {"-----------"};
