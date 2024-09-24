@@ -26,11 +26,12 @@ int main(int argc, char* argv[])
             const int val = input - '0';
             if(val == 1)
             {
+                
                 game_mode_selected = true;
             }
             else if(val == 2)
             {
-                const auto game_controller {new TwoPlayerGameController(game_model, game_board)};
+                const auto game_controller {new TwoPlayerGameController()};
                 game_controller->init_game();
                 game_mode_selected = true;
             }
