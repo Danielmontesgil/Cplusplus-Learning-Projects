@@ -1,16 +1,11 @@
 ﻿#pragma once
+#include "GameControllerBase.h"
 
-class GameModel;
-class GameBoard;
-
-class TwoPlayerGameController
+class TwoPlayerGameController : public GameControllerBase
 {
 public:
-    TwoPlayerGameController(GameModel* model, GameBoard* board):
-        model(model), board(board){}
-    void init_game();
-
-private:
-    GameModel* model;
-    GameBoard* board;
+    TwoPlayerGameController(GameModelBase* game_model, GameBoardBase* game_board)
+        : GameControllerBase(game_model, game_board) {}
+    virtual void init_game() override;
+    virtual ~TwoPlayerGameController() override = default;
 };

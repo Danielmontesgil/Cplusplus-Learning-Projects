@@ -1,6 +1,6 @@
 ﻿#include <iostream>
-#include "GameBoard.h"
-#include "GameModel.h"
+#include "GameBoardBase.h"
+#include "GameModelBase.h"
 #include "TwoPlayerGameController.h"
 
 void TwoPlayerGameController::init_game()
@@ -10,7 +10,7 @@ void TwoPlayerGameController::init_game()
 
     system("cls");
 
-    board->display_board();
+    game_board->display_board();
 
     while(!finished)
     {
@@ -19,13 +19,13 @@ void TwoPlayerGameController::init_game()
         std::cout << "Player " << (player == 1 ? "1(X)" : "2(O)") << " enter your movement: ";
         std::cin >> input;
 
-        if(model->process_input(input, player))
+        if(game_model->process_input(input, player))
         {
             system("cls");
-            board->display_board(model->get_game_status());
+            game_board->display_board(game_model->get_game_status());
             if(player_playing >= 5)
             {
-                finished = model->check_winner();
+                finished = game_model->check_winner();
             }
         }
         
@@ -34,11 +34,11 @@ void TwoPlayerGameController::init_game()
         
         if(finished)
         {
-            board->display_winner(player);
+            game_board->display_winner(player);
         }
         else if(player_playing >= 9)
         {
-            board->display_winner(0);
+            game_board->display_winner(0);
             finished = true;
         }
 
