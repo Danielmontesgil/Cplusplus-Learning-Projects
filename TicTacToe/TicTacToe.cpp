@@ -1,6 +1,8 @@
 #include <iostream>
+#include "AIGameModel.h"
 #include "GameBoard.h"
 #include "GameModel.h"
+#include "SinglePlayerGameController.h"
 #include "TwoPlayerGameController.h"
 
 enum class GameMode
@@ -11,7 +13,6 @@ enum class GameMode
 
 int main(int argc, char* argv[])
 {    
-    const auto game_model {new GameModel()};
     const auto game_board {new GameBoard()};
     bool game_mode_selected {false};
 
@@ -26,11 +27,14 @@ int main(int argc, char* argv[])
             const int val = input - '0';
             if(val == 1)
             {
-                
+                const auto game_model {new AIGameModel()};
+                const auto game_controller {new SinglePlayerGameController(game_model, game_board)};
+                game_controller->init_game();
                 game_mode_selected = true;
             }
             else if(val == 2)
             {
+                const auto game_model {new GameModel()};
                 const auto game_controller {new TwoPlayerGameController(game_model, game_board)};
                 game_controller->init_game();
                 game_mode_selected = true;
