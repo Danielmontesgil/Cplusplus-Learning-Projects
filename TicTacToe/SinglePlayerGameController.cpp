@@ -7,18 +7,21 @@ void SinglePlayerGameController::init_game()
 {
     bool finished {false};
     int player_playing {1};
-
+    
     system("cls");
-
+    
     game_board->display_board();
-
+    
     while(!finished)
     {
         char input{};
         const int player {player_playing % 2 != 0 ? 1 : 2};
-        std::cout << "Player " << (player == 1 ? "1(X)" : "2(O)") << " enter your movement: ";
-        std::cin >> input;
-
+        if(player == 1)
+        {
+            std::cout << "Player (X) enter your movement: ";
+            std::cin >> input;
+        }
+    
         if(game_model->process_input(input, player))
         {
             system("cls");
@@ -28,9 +31,12 @@ void SinglePlayerGameController::init_game()
                 finished = game_model->check_winner();
             }
         }
-        
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        if(player == 1)
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         
         if(finished)
         {
@@ -41,7 +47,7 @@ void SinglePlayerGameController::init_game()
             game_board->display_winner(0);
             finished = true;
         }
-
+    
         player_playing++;
     }
 }
