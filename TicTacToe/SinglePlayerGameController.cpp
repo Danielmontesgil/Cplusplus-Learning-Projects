@@ -30,6 +30,7 @@ void SinglePlayerGameController::init_game()
             {
                 finished = game_model->check_winner();
             }
+            player_playing++;
         }
 
         if(player == 1)
@@ -42,12 +43,10 @@ void SinglePlayerGameController::init_game()
         {
             game_board->display_winner(player);
         }
-        else if(player_playing >= 9)
+        else if(!game_model->is_moves_left())
         {
             game_board->display_winner(0);
             finished = true;
         }
-    
-        player_playing++;
     }
 }

@@ -68,17 +68,6 @@ bool AIGameModel::check_winner() const
     return false;
 }
 
-bool AIGameModel::is_moves_left() const
-{
-    for (int position : player_moves)
-    {
-        if(position == -1)
-        {
-            return true;
-        }
-    }
-    return false;
-}
 
 int AIGameModel::minimax(int depth, bool is_max)
 {

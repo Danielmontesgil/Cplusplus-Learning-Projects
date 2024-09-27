@@ -11,6 +11,5 @@ public:
     virtual ~AIGameModel() override = default;
 
 private:
-    bool is_moves_left() const;
     int minimax(int depth, bool is_max);
 };
