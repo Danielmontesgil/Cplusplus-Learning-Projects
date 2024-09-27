@@ -31,6 +31,8 @@ int main(int argc, char* argv[])
                 const auto game_controller {new SinglePlayerGameController(game_model, game_board)};
                 game_controller->init_game();
                 game_mode_selected = true;
+                delete game_model;
+                delete game_controller;
             }
             else if(val == 2)
             {
@@ -38,6 +40,8 @@ int main(int argc, char* argv[])
                 const auto game_controller {new TwoPlayerGameController(game_model, game_board)};
                 game_controller->init_game();
                 game_mode_selected = true;
+                delete game_model;
+                delete game_controller;
             }
         }
 
@@ -48,6 +52,8 @@ int main(int argc, char* argv[])
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
+
+    delete game_board;
     
     return 0;
 }
