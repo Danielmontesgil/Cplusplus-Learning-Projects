@@ -22,7 +22,7 @@ bool AIGameModel::process_input(char player_input, int player)
 
             if(moveVal > best_val)
             {
-                best_move = i;
+                best_move = static_cast<int>(i);
                 best_val = moveVal;
             }
         }
