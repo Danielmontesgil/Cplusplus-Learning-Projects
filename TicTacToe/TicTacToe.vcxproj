@@ -156,9 +156,9 @@
   <ItemGroup>
     <ClCompile Include="AIGameModel.cpp" />
     <ClCompile Include="GameBoard.cpp" />
+    <ClCompile Include="GameModelBase.cpp" />
     <ClCompile Include="SinglePlayerGameController.cpp" />
     <ClCompile Include="TwoPlayerGameController.cpp" />
-    <ClCompile Include="GameModel.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
