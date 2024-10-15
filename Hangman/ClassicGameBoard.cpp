@@ -30,11 +30,11 @@ void ClassicGameBoard::update_board(int fails)
     }
     if(fails >= 2)
     {
-        line4[0] = '/';
+        line4[1] = '|';
     }
     if(fails >= 3)
     {
-        line4[1] = '|';
+        line4[0] = '/';
     }
     if(fails >= 4)
     {
