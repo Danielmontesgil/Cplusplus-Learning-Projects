@@ -28,8 +28,8 @@ private:
     int fails {0};
     std::vector<std::string> player_tries {};
 
-    constexpr int fails_per_word {3};
-    constexpr int max_fails {7};
+    int fails_per_word {3};
+    int max_fails {7};
 
     void select_word();
     void process_file();
