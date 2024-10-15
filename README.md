@@ -1,11 +1,16 @@
 # C++ Learning Projects
 
-This repository is dedicated to putting my C++ knowledge into practice, as my professional experience is primarily focused on C#. My goal is to improve my C++ skills through consistent, hands-on coding. To achieve this, I am actively working on two main projects: a [prototype](https://github.com/Danielmontesgil/UnrealCommonUI) in Unreal Engine using C++, and this repository which contains pure C++ projects.
+This repository is dedicated to enhancing my C++ skills through hands-on practice, as my primary professional experience has been in C#. The goal is to continue learning and growing my expertise in C++ by working on various projects.
 
-### Projects Available in This Repository:
+## Featured Projects in This Repository
 
-- [Hangman](https://github.com/Danielmontesgil/Cplusplus-Learning-Projects/tree/main/Hangman): A console-based version of the classic game, featuring different modes and AI integration.
-  
-- [Tic-Tac-Toe](https://github.com/Danielmontesgil/Cplusplus-Learning-Projects/tree/main/TicTacToe): A console-based Tic-Tac-Toe game, offering multiple game modes and a custom AI opponent.
+- **[Hangman](https://github.com/Danielmontesgil/Cplusplus-Learning-Projects/tree/main/Hangman):** A console-based version of the classic game with different game modes.
 
-Feel free to explore the projects and see my progress as I refine my C++ skills!
+- **[Tic-Tac-Toe](https://github.com/Danielmontesgil/Cplusplus-Learning-Projects/tree/main/TicTacToe):** A console-based implementation of Tic-Tac-Toe, featuring multiple game modes and a custom AI opponent for solo play.
+
+Executable files (.exe) for each project are available in the release section if you'd like to play them directly.
+
+Feel free to explore the code and track my progress as I continuously refine my C++ abilities through these projects!
+
+---
+For more about me and my portfolio, visit [my personal website](https://danielmontesgil.github.io).
