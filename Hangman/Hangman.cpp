@@ -96,5 +96,3 @@ int main(int argc, char* argv[])
     
     return 0;
 }
-
-// añadir interfaces para permitir otros modos de juego donde se puedan cambiar las reglas
