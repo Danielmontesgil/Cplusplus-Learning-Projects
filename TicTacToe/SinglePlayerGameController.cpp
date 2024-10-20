@@ -34,7 +34,7 @@ void SinglePlayerGameController::init_game()
             game_board->display_board(game_model->get_game_status());
             if(player_playing >= 5)
             {
-                finished = game_model->check_winner();
+                finished = game_model->check_winner(game_model->get_game_status());
             }
             player_playing++;
         }

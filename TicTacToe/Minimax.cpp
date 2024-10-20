@@ -11,7 +11,7 @@ int Minimax::find_move(int depth, bool is_max, const GameModelBase *game_model)
 
 int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)
 {
-    bool winner = game_model->check_winner();
+    bool winner = game_model->check_winner(player_moves);
 
     if(winner && is_max)
     {
@@ -63,4 +63,3 @@ int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)
 
     return best;
 }
-

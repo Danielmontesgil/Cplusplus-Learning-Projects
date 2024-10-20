@@ -16,7 +16,7 @@ bool GameModelBase::process_input(char player_input, int player)
     return false;
 }
 
-bool GameModelBase::check_winner() const
+bool GameModelBase::check_winner(std::vector<int> board_to_check) const
 {
     const std::vector<std::vector<int>> winning_combinations = {
         {0, 1, 2}, 
@@ -30,9 +30,9 @@ bool GameModelBase::check_winner() const
     };
 
     for (const auto& combination : winning_combinations) {
-        if (player_moves[combination[0]] == player_moves[combination[1]] &&
-            player_moves[combination[0]] == player_moves[combination[2]] &&
-            player_moves[combination[0]] != -1) {
+        if (board_to_check[combination[0]] == board_to_check[combination[1]] &&
+            board_to_check[combination[0]] == board_to_check[combination[2]] &&
+            board_to_check[combination[0]] != -1) {
             return true;
             }
     }

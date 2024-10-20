@@ -10,7 +10,7 @@ public:
     // Process the input and make the move if it is possible
     virtual bool process_input(char player_input, int player);
     // Returns true if a player won the game
-    virtual bool check_winner() const;
+    virtual bool check_winner(std::vector<int> board_to_check) const;
     // Returns true if there are available moves in the board
     virtual bool is_moves_left() const;
     virtual ~GameModelBase() = default;
