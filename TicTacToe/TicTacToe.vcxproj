@@ -157,6 +157,7 @@
     <ClCompile Include="AIGameModel.cpp" />
     <ClCompile Include="GameBoard.cpp" />
     <ClCompile Include="GameModelBase.cpp" />
+    <ClCompile Include="Minimax.cpp" />
     <ClCompile Include="SinglePlayerGameController.cpp" />
     <ClCompile Include="TwoPlayerGameController.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="GameBoardBase.h" />
     <ClInclude Include="GameControllerBase.h" />
     <ClInclude Include="GameModelBase.h" />
+    <ClInclude Include="Minimax.h" />
     <ClInclude Include="SinglePlayerGameController.h" />
     <ClInclude Include="TwoPlayerGameController.h" />
     <ClInclude Include="GameModel.h" />

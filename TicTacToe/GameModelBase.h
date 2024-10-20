@@ -6,7 +6,7 @@ class GameModelBase
 {
 public:
     // Returns the status of the game
-    virtual std::vector<int> get_game_status() = 0;
+    virtual std::vector<int> get_game_status() const = 0;
     // Process the input and make the move if it is possible
     virtual bool process_input(char player_input, int player);
     // Returns true if a player won the game
