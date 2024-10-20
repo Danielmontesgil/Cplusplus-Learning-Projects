@@ -3,10 +3,16 @@
 #include "GameModelBase.h"
 #include "SinglePlayerGameController.h"
 
+#include <random>
+
 void SinglePlayerGameController::init_game()
 {
     bool finished {false};
-    int player_playing {1};
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distr(0, 1);
+    int player_playing {distr(gen)};
     
     system("cls");
     
