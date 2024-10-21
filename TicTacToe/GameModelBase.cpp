@@ -40,9 +40,9 @@ bool GameModelBase::check_winner(std::vector<int> board_to_check) const
     return false;
 }
 
-bool GameModelBase::is_moves_left() const
+bool GameModelBase::is_moves_left(const std::vector<int> &board_to_check) const
 {
-    for (int position : player_moves)
+    for (int position : board_to_check)
     {
         if(position == -1)
         {

@@ -12,7 +12,7 @@ public:
     // Returns true if a player won the game
     virtual bool check_winner(std::vector<int> board_to_check) const;
     // Returns true if there are available moves in the board
-    virtual bool is_moves_left() const;
+    virtual bool is_moves_left(const std::vector<int> &board_to_check) const;
     virtual ~GameModelBase() = default;
 
 protected:

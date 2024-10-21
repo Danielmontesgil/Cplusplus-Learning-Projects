@@ -49,7 +49,7 @@ void SinglePlayerGameController::init_game()
         {
             game_board->display_winner(player);
         }
-        else if(!game_model->is_moves_left())
+        else if(!game_model->is_moves_left(game_model->get_game_status()))
         {
             game_board->display_winner(0);
             finished = true;

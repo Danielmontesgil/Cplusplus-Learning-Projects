@@ -23,7 +23,7 @@ int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)
         return 10 - depth;
     }
 
-    if(!game_model->is_moves_left())
+    if(!game_model->is_moves_left(player_moves))
     {
         return 0;
     }
