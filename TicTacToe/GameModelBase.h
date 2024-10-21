@@ -11,6 +11,7 @@ public:
     virtual bool process_input(char player_input, int player);
     // Returns true if a player won the game
     virtual bool check_winner(std::vector<int> board_to_check) const;
+    virtual bool draw_check(int player_playing) = 0;
     // Returns true if there are available moves in the board
     virtual bool is_moves_left(const std::vector<int> &board_to_check) const;
     virtual ~GameModelBase() = default;

@@ -11,5 +11,7 @@ public:
     virtual std::vector<int> get_game_status() const override { return player_moves; }
     // Process the input and make the move if it is possible
     virtual bool process_input(char player_input, int player) override;
+
+    virtual bool draw_check(int player_playing) override;
     virtual ~AIGameModel() override = default;
 };

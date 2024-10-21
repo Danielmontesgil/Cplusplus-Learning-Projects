@@ -2,7 +2,6 @@
 #include "GameBoardBase.h"
 #include "GameModelBase.h"
 #include "SinglePlayerGameController.h"
-
 #include <random>
 
 void SinglePlayerGameController::init_game()
@@ -21,6 +20,7 @@ void SinglePlayerGameController::init_game()
     while(!finished)
     {
         char input{};
+        bool is_draw{false};
         const int player {player_playing % 2 != 0 ? 1 : 2};
         if(player == 1)
         {
@@ -37,6 +37,7 @@ void SinglePlayerGameController::init_game()
                 finished = game_model->check_winner(game_model->get_game_status());
             }
             player_playing++;
+            is_draw = game_model->draw_check(player_playing);
         }
 
         if(player == 1)
@@ -49,7 +50,7 @@ void SinglePlayerGameController::init_game()
         {
             game_board->display_winner(player);
         }
-        else if(!game_model->is_moves_left(game_model->get_game_status()))
+        else if(is_draw)
         {
             game_board->display_winner(0);
             finished = true;

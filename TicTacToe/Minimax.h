@@ -6,9 +6,11 @@ class GameModelBase;
 class Minimax
 {
 public:
-    static int find_move(int depth, bool is_max, const GameModelBase* game_model);
+    int find_move(int depth, bool is_max, const GameModelBase* game_model);
+    bool get_is_draw() { return is_draw; }
 
 private:
-    static std::vector<int> player_moves;
-    static int minimax(int depth, bool is_max, const GameModelBase* game_model);
+    std::vector<int> player_moves;
+    bool is_draw {true};
+    int minimax(int depth, bool is_max, const GameModelBase* game_model);
 };

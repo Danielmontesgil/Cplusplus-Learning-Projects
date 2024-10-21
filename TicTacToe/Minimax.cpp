@@ -1,8 +1,6 @@
 ﻿#include "Minimax.h"
 #include "GameModel.h"
 
-std::vector<int> Minimax::player_moves;
-
 int Minimax::find_move(int depth, bool is_max, const GameModelBase *game_model)
 {
     player_moves = game_model->get_game_status();
@@ -15,12 +13,14 @@ int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)
 
     if(winner && is_max)
     {
-        return -10 + depth;
+        is_draw = false;
+        return -10;
     }
 
     if(winner && !is_max)
     {
-        return 10 - depth;
+        is_draw = false;
+        return 10;
     }
 
     if(!game_model->is_moves_left(player_moves))
@@ -30,7 +30,7 @@ int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)
     
     if(is_max)
     {
-        int best {-1000};
+        int max {-1000};
 
         for(size_t i{0}; i < player_moves.size(); i++)
         {
@@ -38,16 +38,16 @@ int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)
             {
                 player_moves[i] = 2;
 
-                best = std::max(best, minimax(depth+1, !is_max, game_model));
+                max = std::max(max, minimax(depth+1, !is_max, game_model));
 
                 player_moves[i] = -1;
             }
         }
 
-        return best;
+        return max;
     }
     
-    int best {1000};
+    int min {1000};
 
     for (size_t i{0}; i < player_moves.size(); i++)
     {
@@ -55,11 +55,11 @@ int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)
         {
             player_moves[i] = 1;
 
-            best = std::min(best, minimax(depth+1, !is_max, game_model));
+            min = std::min(min, minimax(depth+1, !is_max, game_model));
 
             player_moves[i] = -1;
         }
     }
 
-    return best;
+    return min;
 }
