@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "GameModelBase.h"
 
+class Minimax;
+
 // Class that models the game between a Player and AI
 class AIGameModel : public GameModelBase
 {
@@ -14,4 +16,7 @@ public:
 
     virtual bool draw_check(int player_playing) override;
     virtual ~AIGameModel() override = default;
+
+private:
+    int check(Minimax* minimax, int player_playing);
 };

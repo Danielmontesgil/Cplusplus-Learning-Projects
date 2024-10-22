@@ -9,35 +9,26 @@ bool AIGameModel::process_input(char player_input, int player)
     }
 
     Minimax* minimax = new Minimax();
-    int best_val {-1000};
-    int best_move {0};
-
-    for(size_t i{0}; i < player_moves.size(); i++)
-    {
-        if(player_moves[i] == -1)
-        {
-            player_moves[i] = 2;
-
-            int moveVal = minimax->find_move(0, false, this);
-
-            player_moves[i] = -1;
-
-            if(moveVal > best_val)
-            {
-                best_move = static_cast<int>(i);
-                best_val = moveVal;
-            }
-        }
-    }
     
-    player_moves[best_move] = 2;
+    player_moves[check(minimax, player)] = 2;
 
+    delete minimax;
     return true;
 }
 
 bool AIGameModel::draw_check(int player_playing)
 {
     Minimax* minimax = new Minimax();
+
+    check(minimax, player_playing);
+
+    auto draw = minimax->get_is_draw();
+    delete minimax;
+    return draw;
+}
+
+int AIGameModel::check(Minimax* minimax, int player_playing)
+{
     int best_val {-1000};
     int best_move {0};
 
@@ -59,6 +50,5 @@ bool AIGameModel::draw_check(int player_playing)
         }
     }
 
-    return minimax->get_is_draw();
+    return best_move;
 }
-
