@@ -1,6 +1,8 @@
 ﻿#pragma once
+#include <memory>
 #include <vector>
 #include "GameModelBase.h"
+#include "Minimax.h"
 
 // Classic Tic Tac Toe for two players
 class GameModel : public GameModelBase
@@ -15,7 +17,21 @@ public:
     virtual ~GameModel() override = default;
 };
 
-inline bool GameModel::draw_check(int player_playing)
+inline bool GameModel::draw_check(const int player_playing)
 {
-    return false;
+    const std::unique_ptr<Minimax> minimax {new Minimax()};
+
+    for(size_t i{0}; i < player_moves.size(); i++)
+    {
+        if(player_moves[i] == -1)
+        {
+            player_moves[i] = player_playing % 2;
+
+            minimax->find_move(0, false, this);
+
+            player_moves[i] = -1;
+        }
+    }
+
+    return minimax->get_is_draw();
 }
