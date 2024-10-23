@@ -1,8 +1,9 @@
 ﻿#pragma once
+#include <memory>
 #include <vector>
 
 // Abstract class that offers basic implementation for different GameModes
-class GameModelBase
+class GameModelBase : public std::enable_shared_from_this<GameModelBase>
 {
 public:
     // Returns the status of the game
