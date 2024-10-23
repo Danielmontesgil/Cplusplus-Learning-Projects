@@ -32,12 +32,12 @@ void SinglePlayerGameController::init_game()
         {
             system("cls");
             game_board->display_board(game_model->get_game_status());
-            if(player_playing >= 5)
+            player_playing++;
+            if(player_playing >= 4)
             {
                 finished = game_model->check_winner(game_model->get_game_status());
+                is_draw = game_model->draw_check(player_playing);
             }
-            player_playing++;
-            is_draw = game_model->draw_check(player_playing);
         }
 
         if(player == 1)
