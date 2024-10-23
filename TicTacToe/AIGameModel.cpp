@@ -9,11 +9,10 @@ bool AIGameModel::process_input(char player_input, const int player)
         return GameModelBase::process_input(player_input, player);
     }
 
-    std::unique_ptr<Minimax> minimax {new Minimax()};
+    const std::unique_ptr<Minimax> minimax {new Minimax()};
     
     player_moves[check(minimax, player)] = 2;
 
-    delete minimax;
     return true;
 }
 
