@@ -19,12 +19,11 @@ bool AIGameModel::process_input(char player_input, const int player)
 
 bool AIGameModel::draw_check(const int player_playing)
 {
-    std::unique_ptr<Minimax> minimax {new Minimax()};
+    const std::unique_ptr<Minimax> minimax {new Minimax()};
 
     check(minimax, player_playing);
 
     const auto draw = minimax->get_is_draw();
-    delete minimax;
     return draw;
 }
 
