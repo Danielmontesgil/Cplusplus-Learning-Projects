@@ -17,7 +17,4 @@ public:
 
     virtual bool draw_check(int player_playing) override;
     virtual ~AIGameModel() override = default;
-
-private:
-    int check(const std::unique_ptr<Minimax> &minimax, int player_playing);
 };

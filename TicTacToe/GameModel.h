@@ -19,19 +19,8 @@ public:
 
 inline bool GameModel::draw_check(const int player_playing)
 {
-    const std::unique_ptr<Minimax> minimax {new Minimax()};
-
-    for(size_t i{0}; i < player_moves.size(); i++)
-    {
-        if(player_moves[i] == -1)
-        {
-            player_moves[i] = player_playing % 2;
-
-            minimax->find_move(0, false, this);
-
-            player_moves[i] = -1;
-        }
-    }
+    const std::unique_ptr<Minimax> minimax {new Minimax(player_moves)};
+    minimax->find_move(0, false, this, player_playing);
 
     return minimax->get_is_draw();
 }

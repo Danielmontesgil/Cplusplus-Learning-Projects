@@ -1,10 +1,30 @@
 ﻿#include "Minimax.h"
 #include "GameModel.h"
 
-int Minimax::find_move(int depth, bool is_max, const GameModelBase *game_model)
+int Minimax::find_move(const int depth, const bool is_max, const GameModelBase *game_model, const int player_playing)
 {
-    player_moves = game_model->get_game_status();
-    return minimax(depth, is_max, game_model);
+    int best_val {-1000};
+    int best_move {0};
+
+    for(size_t i{0}; i < player_moves.size(); i++)
+    {
+        if(player_moves[i] == -1)
+        {
+            player_moves[i] = player_playing % 2;
+
+            int moveVal = minimax(depth, is_max, game_model);
+
+            player_moves[i] = -1;
+
+            if(moveVal > best_val)
+            {
+                best_move = static_cast<int>(i);
+                best_val = moveVal;
+            }
+        }
+    }
+
+    return best_move;
 }
 
 int Minimax::minimax(int depth, bool is_max, const GameModelBase* game_model)

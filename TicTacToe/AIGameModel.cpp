@@ -9,45 +9,19 @@ bool AIGameModel::process_input(char player_input, const int player)
         return GameModelBase::process_input(player_input, player);
     }
 
-    const std::unique_ptr<Minimax> minimax {new Minimax()};
+    const std::unique_ptr<Minimax> minimax {new Minimax(player_moves)};
     
-    player_moves[check(minimax, player)] = 2;
+    player_moves[minimax->find_move(0, false, this, player)] = 2;
 
     return true;
 }
 
 bool AIGameModel::draw_check(const int player_playing)
 {
-    const std::unique_ptr<Minimax> minimax {new Minimax()};
+    const std::unique_ptr<Minimax> minimax {new Minimax(player_moves)};
 
-    check(minimax, player_playing);
+    minimax->find_move(0, false, this, player_playing);
 
     const auto draw = minimax->get_is_draw();
     return draw;
-}
-
-int AIGameModel::check(const std::unique_ptr<Minimax> &minimax, const int player_playing)
-{
-    int best_val {-1000};
-    int best_move {0};
-
-    for(size_t i{0}; i < player_moves.size(); i++)
-    {
-        if(player_moves[i] == -1)
-        {
-            player_moves[i] = player_playing % 2;
-
-            int moveVal = minimax->find_move(0, false, this);
-
-            player_moves[i] = -1;
-
-            if(moveVal > best_val)
-            {
-                best_move = static_cast<int>(i);
-                best_val = moveVal;
-            }
-        }
-    }
-
-    return best_move;
 }
