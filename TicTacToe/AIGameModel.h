@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <memory>
 #include "GameModelBase.h"
 
 class Minimax;
@@ -18,5 +19,5 @@ public:
     virtual ~AIGameModel() override = default;
 
 private:
-    int check(Minimax* minimax, int player_playing);
+    int check(const std::unique_ptr<Minimax> &minimax, int player_playing);
 };

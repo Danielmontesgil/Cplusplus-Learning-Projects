@@ -5,8 +5,8 @@
 class TwoPlayerGameController : public GameControllerBase
 {
 public:
-    TwoPlayerGameController(GameModelBase* game_model, GameBoardBase* game_board)
-        : GameControllerBase(game_model, game_board) {}
+    TwoPlayerGameController(const std::shared_ptr<GameModelBase> &game_model_param, const std::shared_ptr<GameBoardBase> &game_board_param)
+        : GameControllerBase(game_model_param, game_board_param) {}
     // Handles the game flow for 2 Players
     virtual void init_game() override;
     virtual ~TwoPlayerGameController() override = default;

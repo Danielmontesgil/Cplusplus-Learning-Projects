@@ -1,14 +1,15 @@
 ﻿#include "AIGameModel.h"
+#include <memory>
 #include "Minimax.h"
 
-bool AIGameModel::process_input(char player_input, int player)
+bool AIGameModel::process_input(char player_input, const int player)
 {
     if(player == 1)
     {
         return GameModelBase::process_input(player_input, player);
     }
 
-    Minimax* minimax = new Minimax();
+    std::unique_ptr<Minimax> minimax {new Minimax()};
     
     player_moves[check(minimax, player)] = 2;
 
@@ -16,18 +17,18 @@ bool AIGameModel::process_input(char player_input, int player)
     return true;
 }
 
-bool AIGameModel::draw_check(int player_playing)
+bool AIGameModel::draw_check(const int player_playing)
 {
-    Minimax* minimax = new Minimax();
+    std::unique_ptr<Minimax> minimax {new Minimax()};
 
     check(minimax, player_playing);
 
-    auto draw = minimax->get_is_draw();
+    const auto draw = minimax->get_is_draw();
     delete minimax;
     return draw;
 }
 
-int AIGameModel::check(Minimax* minimax, int player_playing)
+int AIGameModel::check(const std::unique_ptr<Minimax> &minimax, const int player_playing)
 {
     int best_val {-1000};
     int best_move {0};

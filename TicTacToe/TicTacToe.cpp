@@ -13,7 +13,7 @@ enum class GameMode
 
 int main(int argc, char* argv[])
 {    
-    const auto game_board {new GameBoard()};
+    const std::shared_ptr<GameBoardBase> game_board {new GameBoard()};
     bool game_mode_selected {false};
 
     while(!game_mode_selected)
@@ -27,21 +27,17 @@ int main(int argc, char* argv[])
             const int val = input - '0';
             if(val == 1)
             {
-                const auto game_model {new AIGameModel()};
-                const auto game_controller {new SinglePlayerGameController(game_model, game_board)};
+                const std::shared_ptr<GameModelBase> game_model {new AIGameModel()};
+                const std::unique_ptr<GameControllerBase> game_controller {new SinglePlayerGameController(game_model, game_board)};
                 game_controller->init_game();
                 game_mode_selected = true;
-                delete game_model;
-                delete game_controller;
             }
             else if(val == 2)
             {
-                const auto game_model {new GameModel()};
-                const auto game_controller {new TwoPlayerGameController(game_model, game_board)};
+                const std::shared_ptr<GameModelBase> game_model {new GameModel()};
+                const std::unique_ptr<GameControllerBase> game_controller {new TwoPlayerGameController(game_model, game_board)};
                 game_controller->init_game();
                 game_mode_selected = true;
-                delete game_model;
-                delete game_controller;
             }
         }
 
@@ -52,8 +48,6 @@ int main(int argc, char* argv[])
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
-
-    delete game_board;
     
     return 0;
 }
