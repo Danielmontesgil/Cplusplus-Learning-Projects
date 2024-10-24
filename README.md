@@ -8,7 +8,7 @@ This repository is dedicated to enhancing my C++ skills through hands-on practic
 
 - **[Tic-Tac-Toe](https://github.com/Danielmontesgil/Cplusplus-Learning-Projects/tree/main/TicTacToe):** A console-based implementation of Tic-Tac-Toe, featuring multiple game modes and a custom AI opponent for solo play.
 
-Executable files (.exe) for each project are available in the release section if you'd like to play them directly.
+Executable files (.exe) for each project are available in the [releases](https://github.com/Danielmontesgil/Cplusplus-Learning-Projects/releases) section if you'd like to play them directly.
 
 Feel free to explore the code and track my progress as I continuously refine my C++ abilities through these projects!
 
