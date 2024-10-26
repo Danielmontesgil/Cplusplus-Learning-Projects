@@ -10,7 +10,7 @@ int Minimax::find_move(const int depth, const bool is_max, const int player_play
     {
         if(player_moves[i] == -1)
         {
-            player_moves[i] = player_playing % 2;
+            player_moves[i] = player_playing % 2 == 0 ? 2 : 1;
 
             int moveVal = minimax(depth, is_max);
 
