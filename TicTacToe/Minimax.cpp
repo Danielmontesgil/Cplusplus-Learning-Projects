@@ -3,6 +3,7 @@
 
 int Minimax::find_move(const int depth, const bool is_max, const int player_playing)
 {
+    player_moves = game_model->get_game_status();
     int best_val {-1000};
     int best_move {0};
 

@@ -19,7 +19,7 @@ public:
 
 inline bool GameModel::draw_check(const int player_playing)
 {
-    const std::unique_ptr<Minimax> minimax {new Minimax(shared_from_this(), player_moves)};
+    const std::unique_ptr<Minimax> minimax {new Minimax(shared_from_this())};
     minimax->find_move(0, false, player_playing);
 
     return minimax->get_is_draw();
