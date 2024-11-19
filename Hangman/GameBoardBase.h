@@ -13,5 +13,8 @@ public:
 
     // Virtual destructor for cleanup in derived classes.
     virtual ~GameBoardBase() = default;
+
+protected:
+    virtual std::string format_word_to_show(const std::string& player_word) const = 0;
 };
 

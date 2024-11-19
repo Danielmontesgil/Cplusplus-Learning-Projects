@@ -19,4 +19,6 @@ private:
     std::string line6 {"     |  \n"};
 
     int line_spacing {3};
+
+    virtual std::string format_word_to_show(const std::string& player_word) const override;
 };

@@ -4,13 +4,26 @@
 
 void ClassicGameBoard::display_game_board(const std::string &player_word) const
 {
-    auto value = player_word.length() + line_spacing;
+    auto value = player_word.length() * 2 - 1 + line_spacing;
     std::cout << std::setw(value + line_spacing + line1.length()) << line1;
     std::cout << std::setw(value + line_spacing + line2.length()) << line2;
     std::cout << std::setw(value + line_spacing + line3.length()) << line3;
     std::cout << std::setw(value + line_spacing + line4.length()) << line4;
     std::cout << std::setw(value + line_spacing + line5.length()) << line5;
-    std::cout << "   " << player_word << "   " << line6;
+    std::cout << "   " << format_word_to_show(player_word) << "   " << line6;
+}
+
+std::string ClassicGameBoard::format_word_to_show(const std::string &player_word) const
+{
+    std::string formatted_word;
+    for (size_t i = 0; i < player_word.size(); ++i) {
+        formatted_word += player_word[i];
+        if (i < player_word.size() - 1) {
+            formatted_word += ' ';
+        }
+    }
+
+    return formatted_word;
 }
 
 void ClassicGameBoard::update_board(int fails)

@@ -92,6 +92,9 @@ int main(int argc, char* argv[])
         }
     }
 
+    std::cout << "Enter to exit...";
+    std::cin.get();
+
     delete game_mode;
     
     return 0;
